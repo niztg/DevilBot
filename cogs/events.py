@@ -48,7 +48,7 @@ class eventsCog(commands.Cog):
         with open('deleted.json', 'r') as f:
             deleted = json.load(f)
 
-        deleted[str(message.channel.id)] = f'{message.clean_content} ««« {message.author.name}#{message.author.discriminator} ««« {message.created_at}'
+        deleted[str(message.channel.id)] = {'content': message.clean_content, 'author': str(message.author), 'created_at': message.created_at}
 
         with open('deleted.json', 'w') as f:
             json.dump(deleted, f, indent=4)
